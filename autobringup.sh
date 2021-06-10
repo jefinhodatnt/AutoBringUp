@@ -2,6 +2,13 @@
 # Autor: Broly
 # License: GNU General Public License v3.0
 # https://www.gnu.org/licenses/gpl-3.0.txt
+	clear
+	cat << "EOF"
+###################
+#    OUTOBRINGUP  # 
+###################
+EOF
+
 cd device/motorola/ali
 read -p "Enter Default oldrom: " oldrom
 read -p "now please enter the newrom: " newrom
@@ -15,3 +22,5 @@ sed -i 's/'$oldrom'/'$newrom'/g' *.*
 cd ../../../
 source build/envsetup.sh
 lunch
+
+
