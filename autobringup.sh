@@ -5,7 +5,7 @@
 	clear
 	cat << "EOF"
 ###################
-#    OUTOBRINGUP  # 
+#    AUTOBRINGUP  # 
 ###################
 EOF
 
