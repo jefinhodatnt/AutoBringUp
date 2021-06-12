@@ -18,7 +18,7 @@ if [[ -d "device/motorola/ali" ]]
 then
 	cd device/motorola/ali
 else
-	printf "path to device doesn't exist"
+	printf "path to device doesn't exist!!\n"
 	exit 1
 fi
 
@@ -34,7 +34,7 @@ if [[ -f "$oldrom"_ali.mk ]]; then
 	sed -i 's/'$oldrom'/'$newrom'/g' *.*
 	cd ../../../
 else
-	printf "file not found please make sure your device tree is correct!"
+	printf "file not found please make sure your device tree is correct!\n"
 	exit 1
 fi
 
@@ -51,7 +51,7 @@ if [[ -f "$oldrom.dependencies" ]]; then
 	sed -i 's/'$oldrom'/'$newrom'/g' *.*
 	cd ../../../
 else
-	printf "file not found please make sure your device tree is correct!"
+	printf "file not found please make sure your device tree is correct!\n"
 fi
 
 printf "\n\n"
