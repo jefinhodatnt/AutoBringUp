@@ -14,7 +14,7 @@ read -p "Please enter the name of the old rom: " oldrom
 read -p "Now please enter the name of the new rom: " newrom
 printf "\n\n"
 
-if [ -d "device/motorola/ali" ] 
+if [[ -d "device/motorola/ali" ]] 
 then
 	cd device/motorola/ali
 else
@@ -38,7 +38,7 @@ else
 	exit 1
 fi
 
-if [ -d "device/motorola/msm8953-common" ]
+if [[ -d "device/motorola/msm8953-common" ]]
 then 
 	cd device/motorola/msm8953-common
 else 
