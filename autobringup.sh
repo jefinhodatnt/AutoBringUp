@@ -33,6 +33,6 @@ else
 fi
 
 source build/envsetup.sh
-echo -e "your bring up finished please run lunch to iniciate the build!"
+echo -e "your bring up is finished, happy building!"
 exit 1
 
