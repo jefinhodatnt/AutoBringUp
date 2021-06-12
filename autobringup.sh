@@ -13,28 +13,47 @@ printf "WARNING MAKE SURE TO ENTER THE CORRECT ROM NAME\n OR IT WILL RENAME SOME
 read -p "Please enter the name of the old rom: " oldrom
 read -p "Now please enter the name of the new rom: " newrom
 printf "\n\n"
+
 if [ -d "device/motorola/ali" ] 
 then
 	cd device/motorola/ali
-	mv *.dependencies "$newrom".dependencies
-	mv *_ali.mk "$newrom"_ali.mk
+else
+	printf "path to device doesn't exist"
+	exit 1
+fi
+
+if [[ -f "$oldrom.dependencies" ]]; then
+	mv "$oldrom".dependencies "$newrom".dependencies
+else 
+	printf "There's no file named "$oldrom.dependencies"!!\n"
+	exit 1
+fi
+
+if [[ -f "$oldrom"_ali.mk ]]; then
+	mv "$oldrom"_ali.mk "$newrom"_ali.mk
 	sed -i 's/'$oldrom'/'$newrom'/g' *.*
 	cd ../../../
 else
-	echo "Error: Directory /path/to/dir does not exists."
+	printf "file not found please make sure your device tree is correct!"
+	exit 1
 fi
 
 if [ -d "device/motorola/msm8953-common" ]
 then 
 	cd device/motorola/msm8953-common
-	mv *.dependencies "$newrom".dependencies
+else 
+	printf "path to device doesn't exist"
+	exit1
+fi
+
+if [[ -f "$oldrom.dependencies" ]]; then
+	mv "$oldrom".dependencies "$newrom".dependencies
 	sed -i 's/'$oldrom'/'$newrom'/g' *.*
 	cd ../../../
 else
-	echo "Error: Directory /path/to/dir does not exists."
+	printf "file not found please make sure your device tree is correct!"
 fi
 
-source build/envsetup.sh
 printf "\n\n"
-printf "your bring up is finished, happy building!!\n\n"
+printf "your bring up is finished\n to start type\nsource build/envsetup.sh\n and lunch \n"
 exit 1
