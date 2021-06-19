@@ -14,8 +14,7 @@ read -r -p "Please enter the name of the old rom: " oldrom
 read -r -p "Now please enter the name of the new rom: " newrom
 printf "\n\n"
 
-if [[ -d "device/motorola/ali" ]] 
-then
+if [[ -d "device/motorola/ali" ]]; then
 	cd device/motorola/ali || exit
 else
 	printf "path to device doesn't exist!!\n"
@@ -37,8 +36,7 @@ else
 	exit 1
 fi
 
-if [[ -d "device/motorola/msm8953-common" ]]
-then 
+if [[ -d "device/motorola/msm8953-common" ]]; then 
 	cd device/motorola/msm8953-common || exit
 else 
 	printf "path to device doesn't exist"
