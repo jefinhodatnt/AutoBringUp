@@ -14,41 +14,26 @@ read -r -p "Please enter the name of the old rom: " oldrom
 read -r -p "Now please enter the name of the new rom: " newrom
 printf "\n\n"
 
-if [[ -d "device/motorola/ali" ]]; then
-	cd device/motorola/ali || exit
+if [[ -d "device/xiaomi/tulip" ]]; then
+    cd device/xiaomi/tulip || exit
 else
-	printf "path to device doesn't exist!!\n"
-	exit 1
+    printf "path to device doesn't exist!!\n"
+    exit 1
 fi
 
 if [[ -f "$oldrom.dependencies" ]]; then
-	mv "$oldrom".dependencies "$newrom".dependencies || :
+    mv "$oldrom".dependencies "$newrom".dependencies || :
 else 
-	printf "There's no file .dependencies in /device/motorola/ali ignoring\n!!"
+    printf "There's no file .dependencies in /device/xiaomi/tulip ignoring\n!!"
 fi
 
-if [[ -f "$oldrom"_ali.mk ]]; then
-	mv "$oldrom"_ali.mk "$newrom"_ali.mk
-	sed -i 's/'"$oldrom"'/'"$newrom"'/g' ./*.*
-	cd ../../../
+if [[ -f "$oldrom"_tulip.mk ]]; then
+    mv "$oldrom"_tulip.mk "$newrom"_tulip.mk
+    sed -i 's/'"$oldrom"'/'"$newrom"'/g' ./*.*
+    cd ../../../
 else
-	printf "file not found please make sure your device tree is correct!\n"
-	exit 1
-fi
-
-if [[ -d "device/motorola/msm8953-common" ]]; then 
-	cd device/motorola/msm8953-common || exit
-else 
-	printf "path to device doesn't exist"
-	exit1
-fi
-
-if [[ -f "$oldrom.dependencies" ]]; then
-	mv "$oldrom".dependencies "$newrom".dependencies || :
-	sed -i 's/'"$oldrom"'/'"$newrom"'/g' ./*.*
-	cd ../../../
-else
-	printf "There's no file .dependencies in /device/motorola/msm8953-common ignoring\n!!"
+    printf "file not found please make sure your device tree is correct!\n"
+    exit 1
 fi
 
 printf "\n\n"
